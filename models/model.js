@@ -18,7 +18,8 @@ var albumsSchema = new Schema({
     alb_art: Number,
     alb_nom: String,
     alb_annee: Number,
-    alb_prix: Number
+    alb_prix: Number,
+    alb_picture: String
 })
  
 module.exports = mongoose.model('albums', albumsSchema);
@@ -33,14 +34,14 @@ var clientSchema = new Schema({
     cli_dnai: Number
 })
  
-module.exports = mongoose.model('client', clientSchema);
+module.exports = mongoose.model('clients', clientSchema);
 
 var genresSchema = new Schema({
     gen_genre: String,
     gen_libelle: String
 })
  
-module.exports = mongoose.model('client', clientSchema);
+module.exports = mongoose.model('genres', clientSchema);
 
 var historiqueSchema = new Schema({
     his_id: Number,
@@ -63,7 +64,7 @@ var membresSchema = new Schema({
     mem_id: Number,
     mem_nom: String,
     mem_pays: String,
-    mem_ins: String,
+    mem_ins: String
 })
  
 module.exports = mongoose.model('membres', membresSchema);
@@ -84,4 +85,50 @@ var ventesSchema = new Schema({
 })
  
 module.exports = mongoose.model('ventes', ventesSchema);
+
+var mongo_view_art = new Schema({
+    art_nom: {
+        String
+    },
+    art_typ: {
+        String
+    },
+    gen_libelle: {
+        String
+    },
+    pay_libelle: {
+        String
+    }
+}, { collection : 'mongo_view_art' });
+ 
+module.exports = mongoose.model('mongo_view_art', mongo_view_art);
+
+var mongo_view_alb = new Schema({
+    alb_nom: {
+        String
+    },
+    alb_annee: {
+        Number
+    },
+    alb_prix: {
+        Number
+    },
+    alb_picture: {
+        String
+    },
+    art_nom: {
+        String
+    },
+    art_typ: {
+        String
+    },
+    gen_libelle: {
+        String
+    },
+    pay_libelle: {
+        String
+    }
+ }, { collection : 'mongo_view_alb' });
+ 
+module.exports = mongoose.model('mongo_view_alb', mongo_view_alb);
 

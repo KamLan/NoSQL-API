@@ -5,6 +5,12 @@ var mongoose = require('mongoose'),
     
 var artiste = mongoose.model('artistes');
 
+var client = mongoose.model('clients');
+
+var viewArtistes = mongoose.model('mongo_view_art');
+
+var viewAlbums = mongoose.model('mongo_view_alb');
+
 exports.list_all_albums = function(req, res) {
   album.find({}, function(err, albums) {
     if (err)
@@ -18,6 +24,30 @@ exports.list_all_artists = function(req, res) {
     if (err)
       res.send(err);
     res.json(artiste);
+  });
+};
+
+exports.list_all_clients = function(req, res) {
+  client.find({}, function(err, client) {
+    if (err)
+      res.send(err);
+    res.json(client);
+  });
+};
+
+exports.view_art = function(req, res) {
+  viewArtistes.find({}, function(err, viewArtistes) {
+    if (err)
+      res.send(err);
+    res.json(viewArtistes);
+  });
+};
+
+exports.view_alb = function(req, res) {
+  viewAlbums.find({}, function(err, viewAlbums) {
+    if (err)
+      res.send(err);
+    res.json(viewAlbums);
   });
 };
 

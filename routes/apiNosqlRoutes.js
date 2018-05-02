@@ -5,7 +5,15 @@ module.exports = function(app) {
   app.route('/albums')
     .get(NoSQL.list_all_albums)
 
-  app.route('/artistes')
+  app.route('/artists')
     .get(NoSQL.list_all_artists)
 
+  app.route('/clients')
+    .get(NoSQL.list_all_clients)
+
+  app.route('/viewart')
+    .get(NoSQL.view_art)
+
+  app.route('/viewalb')
+    .get(NoSQL.view_alb)
 };
